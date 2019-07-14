@@ -100,7 +100,8 @@ runWilcox <- function(lst_formatted) {
       IQR_post := IQR(!!post),
       statistic := wilcox.test(!!pre, !!post, paired = TRUE, exact = FALSE)$statistic,
       p.value = wilcox.test(!!pre, !!post, paired = TRUE, exact = FALSE)$p.value,
-      z.score = qnorm(p.value)
+      z.score = qnorm(p.value),
+      effect := abs(z.score)/sqrt(count)
     )
     print(result)
   })
